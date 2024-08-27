@@ -1,3 +1,4 @@
+const fs = require('node:fs');
 const express = require('express');
 const app = express();
 const port = 3000;
@@ -5,13 +6,43 @@ const port = 3000;
 // Middleware to parse JSON bodies
 app.use(express.json());
 
+// Middleware to allow CORS
+app.use(function (req, res, next) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader('Access-Control-Allow-Methods', '*');
+    res.setHeader("Access-Control-Allow-Headers", "*");
+    next();
+});
+
 // Simple GET route
 app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
-app.get('/myfolder', (req, res) => {
-    res.send('Goodbye World!');
+app.get('/outlook.csv', (req, res) => {
+    fs.readFile('outlook.csv', 'utf8', (err, data) => {
+        if (err) {
+            console.error("readFile produced this error:");
+            console.error(err);
+            return;
+        }
+        console.log("readFile read this content:");
+        console.log(data);
+        res.send(data);
+    });
+});
+
+app.get('/outlook.json', (req, res) => {
+    fs.readFile('outlook.json', 'utf8', (err, data) => {
+        if (err) {
+            console.error("readFile produced this error:");
+            console.error(err);
+            return;
+        }
+        console.log("readFile read this content:");
+        console.log(data);
+        res.send(data);
+    });
 });
 
 // Example GET route for a resource
@@ -20,10 +51,13 @@ app.get('/api/items', (req, res) => {
 });
 
 // Example POST route to create a new resource
-app.post('/api/items', (req, res) => {
+app.post('/upload_csv', (req, res) => {
     const newItem = req.body;
+    console.log("This is the content:");
+    console.log(req.body);
     // Normally, you'd save this to a database
-    res.status(201).json(newItem);
+    res.json([{ id: 1, name: 'Item 1' }, { id: 2, name: 'Item 2' }]);
+    //res.status(201).json(newItem);
 });
 
 // Start the server
