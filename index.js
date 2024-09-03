@@ -147,7 +147,6 @@ app.get('/outlook.json', async (req, res) => {
     }
 });
 
-<<<<<<< HEAD
 app.post('/upload_csv', async (req, res) => {
     console.log("This is the content of the POST request with upload_csv:")
     console.log(req.body);
@@ -184,22 +183,6 @@ app.post('/upload_json', async (req, res) => {
             "message": err?.message ?? err,
         });
     }
-=======
-// Example GET route for a resource
-app.get('/api/items', (req, res) => {
-    res.json([{ id: 1, name: 'Item 1' }, { id: 2, name: 'Item 2' }]);
-});
-
-// Example POST route to create a new resource
-app.post('/upload_csv', (req, res) => {
-    const newItem = req.body;
-    console.log("This is the content of the CSV file uploaded:");
-    console.log(req.body);
-    console.log("End of content");
-    // Normally, you'd save this to a database
-    res.json([{ id: 1, name: 'Item 1' }, { id: 2, name: 'Item 2' }]);
-    //res.status(201).json(newItem);
->>>>>>> 8f3362107afc23889c9c62346937050a953a85b9
 });
 
 // Start the server
