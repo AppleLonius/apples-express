@@ -99,6 +99,7 @@ function convertFromCsv(text) {
 }
 
 async function persist(data) {
+    if (data.length < 2 || Object.keys(data[0]).length < 10) throw "Not enough data to write";
     // Write the data both as JSON and CSV files
     await fs.writeFile('outlook.csv', toCsv(data));
     await fs.writeFile("outlook.json", JSON.stringify(data, null, 2));
