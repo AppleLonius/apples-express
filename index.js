@@ -186,6 +186,25 @@ app.post('/upload_json', async (req, res) => {
     }
 });
 
+app.put('/upload_json', async (req, res) => {
+    console.log("This is the content of the PUT request with upload_json:")
+    console.log(req.body);
+    try {
+        const count = await persist(req.body);
+        res.json({ 
+            "success": "OK", 
+            "message": `Uploaded data covers ${count} years`,
+        });
+    } catch (err) {
+        console.log("Got an error with writing to file:");
+        console.log(err);
+        res.json({
+            "success": "NOK",
+            "message": err?.message ?? err,
+        });
+    }
+});
+
 // Start the server
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
