@@ -108,9 +108,10 @@ async function persist(data) {
 
 // Middleware to parse JSON bodies
 app.use(express.json());
+// Middleware to parse text/csv bodies
 app.use(express.text());
   
-// Middleware to allow CORS
+// Middleware to allow CORSs
 app.use(function (req, res, next) {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader('Access-Control-Allow-Methods', '*');
@@ -118,18 +119,15 @@ app.use(function (req, res, next) {
     next();
 });
 
-// Middleware to parse text/csv bodies
-app.use(express.text())
-
 // Simple GET route
 app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
-app.get('/outlook.csv', (req, res) => {
+app.get('/outlook.csv', async (req, res) => {
+    console.log("request CSV received!");
     try {
-        const data = fs.readFile('outlook.csv');
-        res.send(data);
+        res.download('outlook.csv');
     } catch (err) {
         console.error("readFile produced this error:");
         console.error(err);

@@ -1,8 +1,8 @@
 [
   {
     "year": "2010/2011",
-    "Area (1000 ha)": 826.9,
-    "Yield (t/ha)": 20,
+    "Area (1000 ha)": 826.3,
+    "Yield (t/ha)": 20.5,
     "Total production": 10535.7,
     "Losses and feed use": 734.3,
     "Usable production": 9801.4,
@@ -19,7 +19,8 @@
     "Imports (processed)": 1602.5,
     "Consumption (processed)": 3693.7,
     "per capita consumption (kg) - processed": 8.4,
-    "Self-sufficiency rate (processed) %": 80.5
+    "Self-sufficiency rate (processed) %": 80.5,
+    "area": 101
   },
   {
     "year": "2011/2012",
@@ -41,7 +42,8 @@
     "Imports (processed)": 1239.5,
     "Consumption (processed)": 3572.9,
     "per capita consumption (kg) - processed": 8.1,
-    "Self-sufficiency rate (processed) %": 91.8
+    "Self-sufficiency rate (processed) %": 91.8,
+    "area": 500
   },
   {
     "year": "2012/2013",
