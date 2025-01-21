@@ -49,3 +49,5 @@ Thumbs.db
 .editorconfig
 package-lock.json
 package.json
+outlook.csv
+outlook.json
